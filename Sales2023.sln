@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales2023.Shared", "Sales2023.Shared\Sales2023.Shared.csproj", "{12E31C41-3163-4E02-8A1A-9A76F3BC105B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sales2023.API", "Sales2023.API\Sales2023.API.csproj", "{532096A7-323E-4007-BC1A-F8D492ADE1B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales2023.API", "Sales2023.API\Sales2023.API.csproj", "{532096A7-323E-4007-BC1A-F8D492ADE1B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sales2023.WEB", "Sales2023.WEB\Sales2023.WEB.csproj", "{C6818695-63AF-43BD-9A41-E2E0F14FF268}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales2023.WEB", "Sales2023.WEB\Sales2023.WEB.csproj", "{C6818695-63AF-43BD-9A41-E2E0F14FF268}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sales2023.Mobile", "Sales2023.Mobile\Sales2023.Mobile.csproj", "{CBEB2BD6-C64B-4069-AFE7-77B960203CA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales2023.Mobile", "Sales2023.Mobile\Sales2023.Mobile.csproj", "{EBB30107-50DA-4278-AA61-65D9767F30A7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales2023.Shared", "Sales2023.Shared\Sales2023.Shared.csproj", "{D3192A15-7AEB-487C-8653-0BB5A7DC4312}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{12E31C41-3163-4E02-8A1A-9A76F3BC105B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{12E31C41-3163-4E02-8A1A-9A76F3BC105B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{12E31C41-3163-4E02-8A1A-9A76F3BC105B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{12E31C41-3163-4E02-8A1A-9A76F3BC105B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{532096A7-323E-4007-BC1A-F8D492ADE1B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{532096A7-323E-4007-BC1A-F8D492ADE1B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{532096A7-323E-4007-BC1A-F8D492ADE1B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -29,12 +25,16 @@ Global
 		{C6818695-63AF-43BD-9A41-E2E0F14FF268}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6818695-63AF-43BD-9A41-E2E0F14FF268}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6818695-63AF-43BD-9A41-E2E0F14FF268}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EBB30107-50DA-4278-AA61-65D9767F30A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EBB30107-50DA-4278-AA61-65D9767F30A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EBB30107-50DA-4278-AA61-65D9767F30A7}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{EBB30107-50DA-4278-AA61-65D9767F30A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EBB30107-50DA-4278-AA61-65D9767F30A7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EBB30107-50DA-4278-AA61-65D9767F30A7}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{CBEB2BD6-C64B-4069-AFE7-77B960203CA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBEB2BD6-C64B-4069-AFE7-77B960203CA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBEB2BD6-C64B-4069-AFE7-77B960203CA2}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{CBEB2BD6-C64B-4069-AFE7-77B960203CA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBEB2BD6-C64B-4069-AFE7-77B960203CA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBEB2BD6-C64B-4069-AFE7-77B960203CA2}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D3192A15-7AEB-487C-8653-0BB5A7DC4312}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3192A15-7AEB-487C-8653-0BB5A7DC4312}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3192A15-7AEB-487C-8653-0BB5A7DC4312}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3192A15-7AEB-487C-8653-0BB5A7DC4312}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
