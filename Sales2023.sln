@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sales2023.WEB", "Sales2023.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sales2023.Mobile", "Sales2023.Mobile\Sales2023.Mobile.csproj", "{CBEB2BD6-C64B-4069-AFE7-77B960203CA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales2023.Shared", "Sales2023.Shared\Sales2023.Shared.csproj", "{D3192A15-7AEB-487C-8653-0BB5A7DC4312}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sales2023.Shared", "Sales2023.Shared\Sales2023.Shared.csproj", "{D3192A15-7AEB-487C-8653-0BB5A7DC4312}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
