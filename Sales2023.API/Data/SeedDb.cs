@@ -15,6 +15,7 @@ namespace Sales2023.API.Data
         {
             await _context.Database.EnsureCreatedAsync();
             await CheckCountriesAsync();
+            await CheckCategoriesAsync();
         }
 
         private async Task CheckCountriesAsync()
@@ -25,6 +26,19 @@ namespace Sales2023.API.Data
                 _context.Countries.Add(new Country { Name = "Brasil" });
                 _context.Countries.Add(new Country { Name = "Colombia" });
                 _context.Countries.Add(new Country { Name = "Uruguay" });
+            }
+
+            await _context.SaveChangesAsync();
+        }
+
+        private async Task CheckCategoriesAsync()
+        {
+            if (!_context.Categories.Any())
+            {
+                _context.Categories.Add(new Category { Name = "Tecnología" });
+                _context.Categories.Add(new Category { Name = "Juegos" });
+                _context.Categories.Add(new Category { Name = "Deportes" });
+                _context.Categories.Add(new Category { Name = "Indumentaria" });
             }
 
             await _context.SaveChangesAsync();
