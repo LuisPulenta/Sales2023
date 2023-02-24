@@ -1,7 +1,7 @@
 ﻿using Sales2023.Shared.Entities;
 using System.ComponentModel.DataAnnotations;
 
-namespace Sales.Shared.Entities
+namespace Sales2023.Shared.Entities
 {
     public class City
     {

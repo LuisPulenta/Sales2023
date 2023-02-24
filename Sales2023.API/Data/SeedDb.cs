@@ -1,5 +1,4 @@
-﻿using Sales.Shared.Entities;
-using Sales2023.Shared.Entities;
+﻿using Sales2023.Shared.Entities;
 
 namespace Sales2023.API.Data
 {

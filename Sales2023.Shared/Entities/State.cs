@@ -1,5 +1,4 @@
-﻿using Sales.Shared.Entities;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Sales2023.Shared.Entities
 {
