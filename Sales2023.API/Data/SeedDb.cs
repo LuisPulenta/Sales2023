@@ -20,6 +20,7 @@ namespace Sales2023.API.Data
         {
             await _context.Database.EnsureCreatedAsync();
             await CheckCountriesAsync();
+            await CheckCategoriesAsync();
         }
 
         private async Task CheckCountriesAsync()
@@ -80,5 +81,38 @@ namespace Sales2023.API.Data
                 }
             }
         }
+
+        private async Task CheckCategoriesAsync()
+        {
+            if (!_context.Categories.Any())
+            {
+                _context.Categories.Add(new Category { Name = "Tecnología" });
+                _context.Categories.Add(new Category { Name = "Deportes" });
+                _context.Categories.Add(new Category { Name = "Juguetes" });
+                _context.Categories.Add(new Category { Name = "Carnicería" });
+                _context.Categories.Add(new Category { Name = "Verdulería" });
+                _context.Categories.Add(new Category { Name = "Panadería" });
+                _context.Categories.Add(new Category { Name = "Frutas" });
+                _context.Categories.Add(new Category { Name = "Fiambres y Quesos" });
+                _context.Categories.Add(new Category { Name = "Pescadería" });
+                _context.Categories.Add(new Category { Name = "Bebidas" });
+                _context.Categories.Add(new Category { Name = "Golosinas" });
+                _context.Categories.Add(new Category { Name = "Galletas y galletitas" });
+                _context.Categories.Add(new Category { Name = "Perfumería" });
+                _context.Categories.Add(new Category { Name = "Bazar" });
+                _context.Categories.Add(new Category { Name = "Librería" });
+                _context.Categories.Add(new Category { Name = "Jardín" });
+                _context.Categories.Add(new Category { Name = "Herramientas" });
+                _context.Categories.Add(new Category { Name = "Embutidos" });
+                _context.Categories.Add(new Category { Name = "Zapatería" });
+                _context.Categories.Add(new Category { Name = "Informática" });
+                _context.Categories.Add(new Category { Name = "Celulares" });
+                _context.Categories.Add(new Category { Name = "Maquillaje" });
+                _context.Categories.Add(new Category { Name = "Belleza" });
+            }
+            await _context.SaveChangesAsync();
+        }
+
+
     }
 }
