@@ -10,7 +10,6 @@
     </ul>
 </nav>
 
-
 @code {
     [Parameter] public int CurrentPage { get; set; } = 1;
     [Parameter] public int TotalPages { get; set; }
@@ -21,6 +20,26 @@
     protected override void OnParametersSet()
     {
         Links = new List<PageModel>();
+        int FirstPage = 1;
+        int RangePage = 10;
+
+
+        if (CurrentPage > TotalPages)
+        {
+            CurrentPage = TotalPages;
+        }
+
+        if (CurrentPage < 0)
+        {
+            CurrentPage = 0;
+        }
+
+        if (CurrentPage > FirstPage + RangePage - 1)
+        {
+            FirstPage = FirstPage + RangePage;
+        }
+
+
 
         var previousLinkEnable = CurrentPage != 1;
         var previousLinkPage = CurrentPage - 1;
@@ -33,7 +52,7 @@
 
         for (int i = 1; i <= TotalPages; i++)
         {
-            if (i >= CurrentPage - Radio && i <= CurrentPage + Radio)
+            if (i >= FirstPage && i <= FirstPage + RangePage - 1)
             {
                 Links.Add(new PageModel
                     {
@@ -44,13 +63,14 @@
             }
         }
 
-        var linkNextEnable = CurrentPage != TotalPages;
-        var linkNextPage = CurrentPage + 1;
+
+        var nextLinkEnable = CurrentPage != TotalPages;
+        var nextLinkPage = CurrentPage + 1;
         Links.Add(new PageModel
             {
                 Text = "Siguiente",
-                Page = linkNextPage,
-                Enable = linkNextEnable
+                Page = nextLinkPage,
+                Enable = nextLinkEnable
             });
 
     }
@@ -72,4 +92,5 @@
         public bool Enable { get; set; } = true;
         public bool Active { get; set; } = false;
     }
+
 }
