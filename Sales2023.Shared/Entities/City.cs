@@ -1,5 +1,4 @@
-﻿using Sales2023.Shared.Entities;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Sales2023.Shared.Entities
 {
@@ -13,5 +12,7 @@ namespace Sales2023.Shared.Entities
         public string Name { get; set; } = null!;
         public int StateId { get; set; }
         public State? State { get; set; }
+        public ICollection<User>? Users { get; set; }
+
     }
 }
