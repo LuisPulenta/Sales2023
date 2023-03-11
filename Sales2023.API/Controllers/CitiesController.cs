@@ -4,9 +4,13 @@ using Sales2023.Shared.Entities;
 using Sales2023.API.Data;
 using Sales2023.API.Helpers;
 using Sales2023.Shared.DTOs;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Sales.API.Controllers
 {
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+
     [ApiController]
     [Route("/api/cities")]
     public class CitiesController : ControllerBase
