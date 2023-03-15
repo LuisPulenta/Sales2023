@@ -146,5 +146,15 @@ namespace Sales2023.API.Controllers
             await _context.SaveChangesAsync();
             return NoContent();
         }
+
+        [AllowAnonymous]
+        [HttpGet("combo")]
+        public async Task<ActionResult> GetCombo()
+        {
+            return Ok(await _context.Countries
+                .OrderBy(c=>c.Name)
+                .ToListAsync());
+        }
+
     }
 }
