@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Sales2023.WEB;
 using Sales2023.WEB.Auth;
+using Sales2023.WEB.Helpers;
 using Sales2023.WEB.Repositories;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);

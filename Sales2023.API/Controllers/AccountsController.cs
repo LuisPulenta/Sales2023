@@ -3,6 +3,7 @@ using Microsoft.IdentityModel.Tokens;
 using Sales2023.API.Helpers;
 using Sales2023.Shared.DTOs;
 using Sales2023.Shared.Entities;
+using Sales2023.Shared.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -15,17 +16,29 @@ namespace Sales2023.API.Controllers
     {
         private readonly IUserHelper _userHelper;
         private readonly IConfiguration _configuration;
+        private readonly IFileStorage _fileStorage;
+        private readonly string _container;
 
-        public AccountsController(IUserHelper userHelper, IConfiguration configuration)
+
+        public AccountsController(IUserHelper userHelper, IConfiguration configuration, IFileStorage fileStorage)
         {
             _userHelper = userHelper;
             _configuration = configuration;
+            _fileStorage = fileStorage;
+            _container = "users";
         }
 
         [HttpPost("CreateUser")]
-        public async Task<ActionResult> CreateUser([FromBody] UserDTO model)
+        public async Task<ActionResult> CreateUser([FromBody] UserDTOModel model)
         {
             User user = model;
+
+            if (!string.IsNullOrEmpty(model.Photo))
+            {
+                var photoUser = Convert.FromBase64String(model.Photo);
+                model.Photo = await _fileStorage.SaveFileAsync(photoUser, ".jpg", _container);
+            }
+
             var result = await _userHelper.AddUserAsync(user, model.Password);
             if (result.Succeeded)
             {
