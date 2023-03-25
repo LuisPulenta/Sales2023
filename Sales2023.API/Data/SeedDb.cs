@@ -60,8 +60,8 @@ namespace Sales2023.API.Data
                 await _userHelper.ConfirmEmailAsync(user, token);
 
 
-                await _userHelper.AddUserAsync(user, "123456");
-                await _userHelper.AddUserToRoleAsync(user, userType.ToString());
+                //await _userHelper.AddUserAsync(user, "123456");
+                //await _userHelper.AddUserToRoleAsync(user, userType.ToString());
             }
 
             return user;
