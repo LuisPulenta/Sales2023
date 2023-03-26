@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Sales2023.API.Data;
 using Sales2023.API.Helpers;
@@ -8,28 +10,28 @@ using Sales2023.Shared.Entities;
 namespace Sales2023.API.Controllers
 {
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("/api/categories")]
-    public class CategoriesController : ControllerBase
+    public class CategoiresController : ControllerBase
     {
         private readonly DataContext _context;
 
-        public CategoriesController(DataContext context)
+        public CategoiresController(DataContext context)
         {
             _context = context;
         }
 
+
         [HttpGet]
-        
-        public async Task<IActionResult> GetAsync([FromQuery] PaginationDTO pagination)
+        public async Task<ActionResult> Get([FromQuery] PaginationDTO pagination)
         {
             var queryable = _context.Categories
-                  .AsQueryable();
+                .AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(pagination.Filter))
             {
                 queryable = queryable.Where(x => x.Name.ToLower().Contains(pagination.Filter.ToLower()));
             }
-
 
             return Ok(await queryable
                 .OrderBy(x => x.Name)
@@ -37,10 +39,13 @@ namespace Sales2023.API.Controllers
                 .ToListAsync());
         }
 
+
         [HttpGet("totalPages")]
         public async Task<ActionResult> GetPages([FromQuery] PaginationDTO pagination)
         {
-            var queryable = _context.Categories.AsQueryable();
+            var queryable = _context.Categories
+                .AsQueryable();
+
             if (!string.IsNullOrWhiteSpace(pagination.Filter))
             {
                 queryable = queryable.Where(x => x.Name.ToLower().Contains(pagination.Filter.ToLower()));
@@ -50,6 +55,20 @@ namespace Sales2023.API.Controllers
             double totalPages = Math.Ceiling(count / pagination.RecordsNumber);
             return Ok(totalPages);
         }
+
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult> Get(int id)
+        {
+            var category = await _context.Categories
+                .FirstOrDefaultAsync(x => x.Id == id);
+            if (category is null)
+            {
+                return NotFound();
+            }
+
+            return Ok(category);
+        }
+
 
         [HttpPost]
         public async Task<ActionResult> Post(Category category)
@@ -62,9 +81,9 @@ namespace Sales2023.API.Controllers
             }
             catch (DbUpdateException dbUpdateException)
             {
-                if (dbUpdateException.InnerException!.Message.Contains("duplicada"))
+                if (dbUpdateException.InnerException!.Message.Contains("duplicate"))
                 {
-                    return BadRequest("Ya existe una categoría con el mismo nombre.");
+                    return BadRequest("Ya existe un registro con el mismo nombre.");
                 }
                 else
                 {
@@ -75,19 +94,6 @@ namespace Sales2023.API.Controllers
             {
                 return BadRequest(exception.Message);
             }
-
-        }
-
-        [HttpGet("{id:int}")]
-        public async Task<ActionResult> Get(int id)
-        {
-            var category = await _context.Categories.FirstOrDefaultAsync(x => x.Id == id);
-            if (category is null)
-            {
-                return NotFound();
-            }
-
-            return Ok(category);
         }
 
         [HttpPut]
@@ -101,7 +107,7 @@ namespace Sales2023.API.Controllers
             }
             catch (DbUpdateException dbUpdateException)
             {
-                if (dbUpdateException.InnerException!.Message.Contains("duplicada"))
+                if (dbUpdateException.InnerException!.Message.Contains("duplicate"))
                 {
                     return BadRequest("Ya existe un registro con el mismo nombre.");
                 }
@@ -114,7 +120,6 @@ namespace Sales2023.API.Controllers
             {
                 return BadRequest(exception.Message);
             }
-
         }
 
         [HttpDelete("{id:int}")]

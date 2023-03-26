@@ -1,67 +1,61 @@
-﻿@page "/categories/edit/{Id:int}"
-@inject NavigationManager navigationManager
+﻿@page "/categories/edit/{CategoryId:int}"
 @inject IRepository repository
-@inject SweetAlertService swal
-@attribute [Authorize(Roles = "Admin")]
+@inject NavigationManager navigationManager
+@inject SweetAlertService sweetAlertService
 
-<h3>Editar Categoría</h3>
+<h3>Editar categoría</h3>
 
 @if (category is null)
 {
-    <div class="spinner"/>
+    <div class="spinner" />
 }
 else
 {
     <CategoryForm @ref="categoryForm" Category="category" OnValidSubmit="EditAsync" ReturnAction="Return" />
 }
 
-
 @code {
     private Category? category;
     private CategoryForm? categoryForm;
 
-
     [Parameter]
-    public int Id { get; set; }
+    public int CategoryId { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        var responseHTTP = await repository.Get<Category>($"/api/categories/{Id}");
-        if (responseHTTP.Error)
+        var responseHttp = await repository.Get<Category>($"/api/categories/{CategoryId}");
+        if (responseHttp.Error)
         {
-            if (responseHTTP.HttpResponseMessage.StatusCode == HttpStatusCode.NotFound)
+            if (responseHttp.HttpResponseMessage.StatusCode == HttpStatusCode.NotFound)
             {
-                navigationManager.NavigateTo("categories");
-                return;
-            }
-            else
-            {
-                var messageError = await responseHTTP.GetErrorMessage();
-                await swal.FireAsync("Error", messageError, SweetAlertIcon.Error);
+                navigationManager.NavigateTo("/categories");
                 return;
             }
 
+            var message = await responseHttp.GetErrorMessage();
+            await sweetAlertService.FireAsync("Error", message, SweetAlertIcon.Error);
+            return;
         }
-        category = responseHTTP.Response;
+
+        category = responseHttp.Response;
     }
 
     private async Task EditAsync()
     {
-        var responseHTTP = await repository.Put("/api/categories", category);
-        if (responseHTTP.Error)
+        var responseHttp = await repository.Put("/api/categories", category);
+        if (responseHttp.Error)
         {
-            var mensajeError = await responseHTTP.GetErrorMessage();
-            await swal.FireAsync("Error", mensajeError, SweetAlertIcon.Error);
+            var message = await responseHttp.GetErrorMessage();
+            await sweetAlertService.FireAsync("Error", message, SweetAlertIcon.Error);
             return;
         }
-        categoryForm!.FormPostedSuccessfully = true;
-        navigationManager.NavigateTo("/categories");
 
+        Return();
     }
 
     private void Return()
     {
         categoryForm!.FormPostedSuccessfully = true;
-        navigationManager.NavigateTo("/categories");
+        navigationManager.NavigateTo($"/categories");
     }
 }

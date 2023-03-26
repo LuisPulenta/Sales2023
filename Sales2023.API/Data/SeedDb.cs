@@ -163,7 +163,5 @@ namespace Sales2023.API.Data
             }
             await _context.SaveChangesAsync();
         }
-
-
     }
 }

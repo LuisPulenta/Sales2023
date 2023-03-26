@@ -2,21 +2,19 @@
 @inject IRepository repository
 @inject NavigationManager navigationManager
 @inject SweetAlertService sweetAlertService
-@attribute [Authorize(Roles = "Admin")]
 
-<h3>Crear Categoría</h3>
+<h3>Crear categoría</h3>
 
-
-<CategoryForm @ref="categoryForm" Category="category" OnValidSubmit="Create" ReturnAction="Return" />
-
-
+<CategoryForm @ref="categoryForm" Category="category" OnValidSubmit="CreateAsync" ReturnAction="Return" />
 
 @code {
     private Category category = new();
     private CategoryForm? categoryForm;
 
+    [Parameter]
+    public int StateId { get; set; }
 
-    private async Task Create()
+    private async Task CreateAsync()
     {
         var httpResponse = await repository.Post("/api/categories", category);
         if (httpResponse.Error)
@@ -25,13 +23,13 @@
             await sweetAlertService.FireAsync("Error", message, SweetAlertIcon.Error);
             return;
         }
-        categoryForm!.FormPostedSuccessfully = true;
-        navigationManager.NavigateTo("/categories");
+
+        Return();
     }
 
     private void Return()
     {
         categoryForm!.FormPostedSuccessfully = true;
-        navigationManager.NavigateTo("/categories");
+        navigationManager.NavigateTo($"/categories");
     }
 }

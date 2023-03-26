@@ -22,7 +22,6 @@ namespace Sales2023.API.Data
             modelBuilder.Entity<Country>().HasIndex(c => c.Name).IsUnique();
             modelBuilder.Entity<State>().HasIndex("Name", "CountryId").IsUnique();
             modelBuilder.Entity<City>().HasIndex("Name", "StateId").IsUnique();
-
         }
     }
 }
