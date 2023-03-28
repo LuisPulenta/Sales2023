@@ -1,5 +1,4 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
-
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -120,6 +119,7 @@ a, .btn-link {
         transform: rotate(360deg)
     }
 }
+
 .multiple-selector {
     display: flex;
 }
@@ -155,3 +155,7 @@ a, .btn-link {
     .multiple-selector-botones button {
         margin: 5px;
     }
+
+
+
+
