@@ -38,7 +38,7 @@ namespace Sales2023.API.Data
             await CheckUserAsync("1008", "Marina", "Martinez", "marina@yopmail.com", "111 111 008", "Valencia", "marina.jpg", UserType.User);
             await CheckUserAsync("1009", "Lionel", "Messi", "messi@yopmail.com", "111 111 009", "París", "messi.jpg", UserType.User);
             await CheckUserAsync("1010", "Rafael", "Nadal", "nadal@yopmail.com", "111 111 010", "Madrid", "nadal.jpg", UserType.User);
-            await CheckUserAsync("1011", "Pablo", "Lacuadri", "pablo@yopmail.com", "111 111 011", "Villa Santa Ana", "pablo.jpg", UserType.User);
+            await CheckUserAsync("1011", "Pablo", "Lacuadri", "pablo@yopmail.com", "111 111 011", "Villa Santa Ana", "pablo.jpg", UserType.Admin);
             await CheckProductsAsync();
         }
 
