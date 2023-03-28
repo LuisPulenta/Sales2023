@@ -25,4 +25,8 @@
     <ProjectReference Include="..\Sales2023.Shared\Sales2023.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Images\products\" />
+  </ItemGroup>
+
 </Project>
