@@ -3,6 +3,7 @@ using CurrieTechnologies.Razor.SweetAlert2;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using MudBlazor.Services;
 using Sales2023.WEB;
 using Sales2023.WEB.Auth;
 using Sales2023.WEB.Helpers;
@@ -18,6 +19,8 @@ builder.Services.AddScoped<IRepository, Repository>();
 builder.Services.AddSweetAlert2();
 builder.Services.AddAuthorizationCore();
 builder.Services.AddBlazoredModal();
+builder.Services.AddMudServices();
+
 
 
 //builder.Services.AddScoped<AuthenticationStateProvider, AuthenticationProviderTest>();
